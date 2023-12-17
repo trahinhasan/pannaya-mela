@@ -1,10 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Cart from "./components/Cart";
 import Dashboard from "./components/Dashboard";
 import RootLayout from "./components/RootLayout";
+import store from "./store/store";
 
+import Cart from "./components/Cart";
 import Product from "./components/Product";
 
 const router = createBrowserRouter([
@@ -26,7 +28,9 @@ function App() {
   return (
     <div>
       <RouterProvider router={router} />
-      <Product />
+      <Provider store={store}>
+        <Product />
+      </Provider>
     </div>
   );
 }
